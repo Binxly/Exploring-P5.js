@@ -32,8 +32,8 @@ function draw() {
     line(midX, 0, midX, height);
     line(midX + quarterX, 0, midX + quarterX, height);
   
-    stroke(0, 0, 255);
-    fill(0, 0, 255);
+    stroke(0, 0, 0);
+    fill(lineColor);
 
     // square in the first quadrant
     rect(quarterX / 2, quarterY / 2, quarterX, quarterY);
