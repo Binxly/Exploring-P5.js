@@ -32,7 +32,7 @@ function Particle() {
     // draw the particle, a line from the previous position to the current position, and update the previous position to the current position
     this.show = () => {
         colorMode(HSL, 360, 100, 100);
-        stroke(hueValue, 100, 50, 0.05, 5);
+        stroke(...hueValue, 0.05); // Use spread operator to unpack hueValue array
         strokeWeight(0.2);
         line(this.pos.x, this.pos.y, this.prevPos.x, this.prevPos.y);
         colorMode(RGB, 255, 255, 255);
