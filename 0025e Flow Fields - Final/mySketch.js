@@ -52,7 +52,7 @@ function draw() {
         let xoff = 0;
         for (let x = 0; x < cols; x++) {
             const index = x + y * cols;
-            const angle = noise(xoff, yoff, zoff) * TWO_PI * 1.2; // * # -> higher, more variance. lower, less variation, more straight lines.
+            const angle = noise(xoff, yoff, zoff) * TWO_PI * 1.4; // * # -> higher, more variance. lower, less variation, more straight lines.
             const v = p5.Vector.fromAngle(angle);
 
             v.setMag(1); // higher faster, lower slower. changes how fast particles move across vectors by changing the magnitude (length) of the vectors)
