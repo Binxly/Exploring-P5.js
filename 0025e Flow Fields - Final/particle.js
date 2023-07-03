@@ -33,7 +33,7 @@ function Particle() {
     this.show = () => {
         colorMode(HSL, 360, 100, 100);
         stroke(hueValue, 100, 50, 0.05, 5);
-        strokeWeight(0.5);
+        strokeWeight(0.2);
         line(this.pos.x, this.pos.y, this.prevPos.x, this.prevPos.y);
         colorMode(RGB, 255, 255, 255);
         this.updatePrev();

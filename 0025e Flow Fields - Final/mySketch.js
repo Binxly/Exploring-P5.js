@@ -28,7 +28,7 @@ function setup() {
     hueValue = floor(random() * 360); //randomize hue value
     colorMode(RGB, 255, 255, 255);
 
-    background(0); // black background
+    background(0); // black backgroundm, might make a gradient later idk
     setTimeout(() => noLoop(), 20000); // how long to wait before pausing animation, in milliseconds (20000 = 20 seconds)
 }
 
@@ -38,9 +38,9 @@ function draw() {
         let xoff = 0;
         for (let x = 0; x < cols; x++) {
             const index = x + y * cols;
-            const angle = noise(xoff, yoff, zoff) * TWO_PI * 3; // * 2 = more variation. 1 = less variation, more straight lines.
+            const angle = noise(xoff, yoff, zoff) * TWO_PI * 2; // * # -> higher, more variance. lower, less variation, more straight lines.
             const v = p5.Vector.fromAngle(angle);
-            v.setMag(1); // 0.8 = faster, 0.2 = slower (default is 1, changes how fast particles move across vectors by changing the magnitude (length) of the vectors)
+            v.setMag(1); // higher faster, lower slower. changes how fast particles move across vectors by changing the magnitude (length) of the vectors)
             flowfield[index] = v;
             xoff += inc;
             // Optional flow field vector lines rendering code commented
