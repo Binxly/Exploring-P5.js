@@ -12,8 +12,6 @@ function setup() {
 	noLoop();
 }
 
-// https://www.youtube.com/watch?v=BjoM9oKOAKY
-
 function draw() {
     let midX = width / 2;
     let midY = height / 2;
