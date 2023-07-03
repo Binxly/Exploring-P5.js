@@ -76,4 +76,9 @@ function draw() {
 
 function keyPressed() {
     if (keyCode === 32) saveCanvas('FlowField', 'png'); // press spacebar to save canvas as png
+    // if p is pressed, change the hue value
+    if (keyCode === 80) {
+        setHueValue();
+        background(0);
+    }
 }
