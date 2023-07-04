@@ -16,10 +16,10 @@ function setup() {
     offScreen.noFill();
     offScreen.stroke(sqColor);
     offScreen.strokeWeight(2);
-    for (let i = 0; i < 800; i++) {
+    for (let i = 0; i < 100; i++) {
         let x = offScreen.random(width);
         let y = offScreen.random(height);
-        let size = offScreen.random(20, 50);
+        let size = offScreen.random(5, 10);
         offScreen.rect(x, y, size, size);
     }
 
