@@ -22,11 +22,11 @@ function draw() {
     let segmentWidth = (width - 2 * padding) / numberOfSegments;
     
     strokeWeight(2);
+
     stroke(lineColor);
     
     for(let i = 0; i < numberOfLines; i++) {
         let yCoords = [];
-        
         for(let j = 0; j <= numberOfSegments; j++) {
             let baseY = padding + i * spaceBetweenLines;
             let displacement = random(-50, 50);
@@ -36,7 +36,7 @@ function draw() {
             displacement *= (i / (numberOfLines - 1));
             yCoords.push(baseY + displacement);
         }
-        
+        // Drawing the line segment by segment using the yCoords array as a reference 
         for(let j = 0; j < numberOfSegments; j++) {
             line(x1 + j * segmentWidth, yCoords[j], x1 + (j+1) * segmentWidth, yCoords[j+1]);
         }
