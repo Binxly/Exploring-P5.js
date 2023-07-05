@@ -1,3 +1,8 @@
+// inspired by The Coding Train: Coding Challenge #90 , Floyd-Steinberg Dithering
+// https://www.youtube.com/watch?v=0L2n8Tg2FwI
+////////////////////////////////////////////////////////////////////////////////
+// cleaned up for simplicity and converted to p5.js in the occompanying .js file
+
 PImage turtle;
 
 void setup() {

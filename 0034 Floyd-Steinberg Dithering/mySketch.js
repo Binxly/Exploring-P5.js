@@ -1,6 +1,8 @@
+// converted from Processing to p5.js
+
 let img;
-let grayscale = true;  // Set to true if you want to convert to grayscale, false otherwise
-let levels = 1;  // Number of color levels in the dithered image
+let grayscale = true;  // Convert image to grayscale
+let levels = 1;  // Number of color levels
 
 function preload() {
   img = loadImage("data\\turtle512.jpg");
@@ -20,12 +22,12 @@ function draw() {
 function ditherImage(img) {
   img.loadPixels();
 
-  if (grayscale) {  // If grayscale is true, convert the image to grayscale
+  if (grayscale) {
     for (let i = 0; i < img.pixels.length; i += 4) {
       let avg = (img.pixels[i] + img.pixels[i + 1] + img.pixels[i + 2]) / 3;
-      img.pixels[i] = avg; // Red
-      img.pixels[i + 1] = avg; // Green
-      img.pixels[i + 2] = avg; // Blue
+      img.pixels[i] = avg; // R
+      img.pixels[i + 1] = avg; // G
+      img.pixels[i + 2] = avg; // B
     }
   }
 
