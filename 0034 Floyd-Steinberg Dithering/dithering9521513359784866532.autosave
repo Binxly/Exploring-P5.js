@@ -1,0 +1,11 @@
+PImage turtle;
+
+void setup() {
+  size(1024,512);
+  turtle = loadImage("turtle512.jpg");
+  image(turtle, 0, 0);
+}
+
+void draw() {
+  
+}
