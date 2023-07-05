@@ -1,37 +1,53 @@
 PImage turtle;
 
 void setup() {
-    size(1024,512);
-    turtle = loadImage("turtle512.jpg");
-    //turtle.filter(GRAY);
-    image(turtle, 0, 0);
+  size(1024, 512);
+  turtle = loadImage("turtle512.jpg");
+  image(turtle, 0, 0);
+}
+
+int pixelIndex(int x, int y) {
+  return x + y * turtle.width;
+}
+
+void distributeError(int x, int y, float errR, float errG, float errB, float factor) {
+  int index = pixelIndex(x, y);
+  color currentColor = turtle.pixels[index];
+  float r = red(currentColor) + errR * factor;
+  float g = green(currentColor) + errG * factor;
+  float b = blue(currentColor) + errB * factor;
+  turtle.pixels[index] = color(r, g, b);
 }
 
 void draw() {
-    turtle.loadPixels();
+  turtle.loadPixels();
 
-    for (int x = 0; x < turtle.width; x++) {
-        for (int y = 0; y < turtle.height; y++) {
-            int index = x + y * turtle.width;
-            color pixel = turtle.pixels[index];
-            
-            float r = red(pixel);
-            float g = green(pixel);
-            float b = blue(pixel);
+  for (int y = 0; y < turtle.height - 1; y++) {
+    for (int x = 1; x < turtle.width - 1; x++) {
+      color pixel = turtle.pixels[pixelIndex(x, y)];
 
-            int factor = 4;
+      float oldR = red(pixel);
+      float oldG = green(pixel);
+      float oldB = blue(pixel);
 
-            int newR = round(factor * r / 255) * (255/4);
-            int newG = round(factor * g / 255) * (255/4);
-            int newB = round(factor * b / 255) * (255/4);
+      int factor = 1;
+      int newR = round(factor * oldR / 255) * (255 / factor);
+      int newG = round(factor * oldG / 255) * (255 / factor);
+      int newB = round(factor * oldB / 255) * (255 / factor);
 
-            float errR = r - newR;
-            float errG = g - newG;
-            float errB = b - newB;
+      turtle.pixels[pixelIndex(x, y)] = color(newR, newG, newB);
 
-            turtle.pixels[index] = color(newR, newG, newB);
-      }
+      float errR = oldR - newR;
+      float errG = oldG - newG;
+      float errB = oldB - newB;
+
+      distributeError(x + 1, y, errR, errG, errB, 7 / 16.0);
+      distributeError(x - 1, y + 1, errR, errG, errB, 3 / 16.0);
+      distributeError(x, y + 1, errR, errG, errB, 5 / 16.0);
+      distributeError(x + 1, y + 1, errR, errG, errB, 1 / 16.0);
     }
-    turtle.updatePixels();
-    image(turtle, 512, 0);
+  }
+
+  turtle.updatePixels();
+  image(turtle, 512, 0);
 }
