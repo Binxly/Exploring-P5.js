@@ -8,6 +8,7 @@ PImage turtle;
 void setup() {
   size(1024, 512);
   turtle = loadImage("turtle512.jpg");
+  turtle.greyscale(); // sets greyscale, uncomment for color
   image(turtle, 0, 0);
 }
 
