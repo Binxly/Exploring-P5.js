@@ -14,7 +14,7 @@
 
 let points = [];
 let colors = ['#030505', '#dc451a', '#5fa37b', '#d98808', '#10554d']; // updated to soft and harmonious pastel colors
-let bgColor = "#030505";  // updated to a dark grey
+let bgColor = "#0D1E27";  // updated to a dark grey
 let trColors = ["#F7F0F5", "#DECBB7", "#3E000C"];  // updated to soft and harmonious pastel colors
 
 function setup() {
@@ -46,7 +46,7 @@ function draw() {
     points = []; 
 
     drawSquares();
-    granulateFuzzify(10, 4, true);
+    granulateFuzzify(15, 4, true);
     //applyGrain();
 }
 
@@ -92,26 +92,23 @@ function drawSquares() {
     fill(random(colors));
 
     rect(x3, y3, squareSize3, squareSize3);
-    let cCellSize = squareSize3 / 3;
-
-    let trColor = random(colors);
-    for (let i2 = 0; i2 < 3; i2++) {
-        for (let j2 = 0; j2 < 3; j2++) {
+    let numCells = 20;  // number of cells
+    let cCellSize = squareSize3 / numCells;  // size of each cell
+    
+    for (let i2 = 0; i2 < numCells; i2++) {  // iterate over numCells, not cCellSize
+        for (let j2 = 0; j2 < numCells; j2++) {  // iterate over numCells, not cCellSize
     
             let x = x3 + i2 * cCellSize;
             let y = y3 + j2 * cCellSize;
-            
-
             stroke(random(colors));
-            strokeWeight(0.01)
-            fill(trColor);  // using random() to select a random color from the trColors array
-            triangle(x, y, x + cCellSize, y, x + cCellSize / 2, y + cCellSize / 2);  // top triangle
-            
-            fill(trColor);
-            triangle(x, y + cCellSize, x + cCellSize, y + cCellSize, x + cCellSize / 2, y + cCellSize / 2);  // bottom triangle
+    
+            if (random() < 0.5) {
+                line(x, y + cCellSize / 2, x + cCellSize, y + cCellSize / 2);
+            } else {
+                line(x + cCellSize / 2, y, x + cCellSize / 2, y + cCellSize);
+            }
         }
     }
-    
 }
 
 function applyGrain() {
@@ -123,4 +120,18 @@ function applyGrain() {
       pixels[i + 2] = constrain(pixels[i + 2] + grain, 0, 255);
     }
     updatePixels();
+}
+
+function keyPressed() {
+
+	switch (keyCode) {
+		case 32: // SPACE
+			draw();
+			break;
+		case 83: // S
+			save('SnT-hatches.png');
+			break;
+		default: break;
+	}
+	return false;
 }
