@@ -111,16 +111,16 @@ function drawSquares() {
     }
 }
 
-function applyGrain() {
-    loadPixels();
-    for (let i = 0; i < pixels.length; i += 4) {
-      let grain = random(-10, 10);  // reduced the grain for a subtler effect
-      pixels[i] = constrain(pixels[i] + grain, 0, 255);     
-      pixels[i + 1] = constrain(pixels[i + 1] + grain, 0, 255); 
-      pixels[i + 2] = constrain(pixels[i + 2] + grain, 0, 255);
-    }
-    updatePixels();
-}
+// function applyGrain() {
+//     loadPixels();
+//     for (let i = 0; i < pixels.length; i += 4) {
+//       let grain = random(-10, 10);  // reduced the grain for a subtler effect
+//       pixels[i] = constrain(pixels[i] + grain, 0, 255);     
+//       pixels[i + 1] = constrain(pixels[i + 1] + grain, 0, 255); 
+//       pixels[i + 2] = constrain(pixels[i + 2] + grain, 0, 255);
+//     }
+//     updatePixels();
+// }
 
 function keyPressed() {
 
