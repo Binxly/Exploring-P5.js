@@ -7,7 +7,7 @@ function preload() {
 
 function setup() {
   createCanvas(512, 512);
-  img.resize(100, 100);
+  img.resize(20, 90);
   noSmooth();
 
   img.loadPixels();
